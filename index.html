@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navidad para 120 + peludos de Lima</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf5ea; --paper:#fffdf8; --ink:#2b1d16; --muted:#6e5a4c;
+    --red:#c8322a; --red-dark:#9d231d; --brown:#5a3a28; --green:#2f6b4f;
+    --line:#ead9c2; --gold:#e9a23b;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:Nunito,system-ui,sans-serif;
+       font-size:17px;line-height:1.55;padding-bottom:84px;
+       background-image:radial-gradient(#efe2cc 1px,transparent 1px);background-size:22px 22px}
+  .px{font-family:Nunito,system-ui,sans-serif;letter-spacing:.01em}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  a{color:var(--red-dark)}
+
+  header.hero{padding-top:56px;padding-bottom:28px}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;font-family:Nunito;font-weight:700;
+    color:var(--green);font-size:15px;text-transform:uppercase;letter-spacing:.08em}
+  .eyebrow i{width:10px;height:10px;background:var(--red);display:inline-block}
+  h1{font-family:Nunito;font-weight:900;font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-.02em;margin:14px 0 16px;color:var(--brown)}
+  h1 em{font-style:normal;color:var(--red)}
+  .lead{font-size:clamp(17px,2vw,20px);max-width:620px;color:var(--muted);margin:0}
+  .lead strong{color:var(--ink)}
+
+  .card{background:var(--paper);border:3px solid var(--brown);box-shadow:6px 6px 0 var(--brown);padding:26px}
+  .progress{margin-top:34px}
+  .amounts{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+  .raised{font-family:Nunito;font-weight:800;letter-spacing:-.02em;font-size:clamp(40px,6vw,58px);color:var(--red);line-height:1}
+  .goal{font-size:18px;color:var(--muted)}
+  .goal b{color:var(--ink)}
+  .soles-eq{font-size:20px;font-weight:800;color:var(--brown)}
+  .split{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .chip{background:var(--cream);border:2px solid var(--line);padding:6px 12px;font-size:15px}
+  .chip b{font-weight:800}
+  .donate{grid-template-columns:repeat(3,1fr)!important}
+  .way{display:flex;flex-direction:column}
+  .way .cta{align-self:flex-start}
+  .wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .wall span{background:var(--paper);border:2px solid var(--brown);padding:4px 10px;font-weight:700;font-size:15px}
+  .links{display:grid;gap:12px;margin-top:18px}
+  .linkcard{display:flex;align-items:center;gap:14px;background:var(--paper);border:3px solid var(--brown);box-shadow:4px 4px 0 var(--brown);
+     padding:12px 16px;text-decoration:none;color:var(--ink)}
+  .linkcard:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--brown)}
+  .lc-icon{flex:none;width:58px;height:46px;display:grid;place-items:center;background:var(--cream);border:2px solid var(--line)}
+  .lc-icon canvas{image-rendering:pixelated;width:48px}
+  .lc-txt{display:flex;flex-direction:column;line-height:1.3;flex:1}
+  .lc-txt small{color:var(--muted);font-size:14px;margin-top:2px}
+  .lc-go{font-weight:900;font-size:22px;color:var(--red)}
+  .bar-dog{cursor:pointer}
+  .bar{position:relative;margin:40px 0 14px;height:34px;border:3px solid var(--brown);background:#f3e6d3;
+       display:grid;grid-template-columns:repeat(24,1fr);gap:3px;padding:3px}
+  .bar span{background:transparent}
+  .bar span.on{background:var(--red)}
+  .bar span.on:nth-child(3n){background:var(--red-dark)}
+  .bar-dog{position:absolute;bottom:100%;transform:translateX(-50%);margin-bottom:2px;image-rendering:pixelated;transition:left 1.2s cubic-bezier(.2,.8,.2,1)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;border-top:2px dashed var(--line);padding-top:18px}
+  .stat .n{font-family:Nunito;font-weight:800;font-size:30px;color:var(--brown);line-height:1.1}
+  .stat .l{font-size:14px;color:var(--muted)}
+  .cta{display:inline-block;margin-top:22px;font-family:Nunito;font-weight:700;font-size:20px;
+       background:var(--red);color:#fff;text-decoration:none;padding:12px 22px;border:3px solid var(--brown);box-shadow:4px 4px 0 var(--brown)}
+  .cta:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--brown)}
+  .cta:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--brown)}
+
+  section{padding:46px 0 10px}
+  h2{font-family:Nunito;font-weight:900;letter-spacing:-.01em;font-size:clamp(28px,4vw,38px);color:var(--brown);margin:0 0 6px}
+  .sub{color:var(--muted);margin:0 0 24px;max-width:640px}
+
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tile{background:var(--paper);border:3px solid var(--brown);padding:20px}
+  .tile .price{font-family:Nunito;font-weight:800;font-size:34px;letter-spacing:-.01em;color:var(--green);line-height:1}
+  .tile .soles{font-size:13px;color:var(--muted)}
+  .tile p{margin:10px 0 0}
+
+  .donate{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+  .way h3{font-family:Nunito;font-size:22px;margin:0 0 4px;color:var(--brown)}
+  .way .tag{display:inline-block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+     background:var(--green);color:#fff;padding:2px 8px;margin-bottom:10px}
+  .way.alt .tag{background:var(--gold);color:var(--ink)}
+  .number{font-family:Nunito;font-size:28px;font-weight:800;letter-spacing:.03em;margin:6px 0}
+  button.copy{font:inherit;font-weight:800;font-size:14px;cursor:pointer;background:var(--cream);color:var(--ink);border:2px solid var(--brown);padding:6px 12px}
+  .note{margin-top:18px;background:#fff3d9;border:2px dashed var(--gold);padding:14px 18px;font-size:15px}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .about ul{padding-left:0;list-style:none;margin:0}
+  .about li{padding-left:24px;position:relative;margin-bottom:10px}
+  .about li::before{content:"";position:absolute;left:2px;top:9px;width:10px;height:10px;background:var(--red)}
+  .updates .empty{color:var(--muted);font-style:italic}
+  .upd{border-left:4px solid var(--green);padding:4px 0 4px 14px;margin-bottom:12px}
+  .upd .d{font-size:13px;font-weight:800;color:var(--green)}
+
+  footer{padding:40px 0 20px;color:var(--muted);font-size:14px}
+
+  /* Suelo con animalitos */
+  #lane{position:fixed;left:0;right:0;bottom:0;height:78px;pointer-events:none;z-index:20;overflow:hidden;background:linear-gradient(rgba(251,245,234,0),rgba(251,245,234,.95) 45%)}
+  #lane::before{content:"";position:absolute;left:0;right:0;bottom:0;height:16px;
+     background:repeating-linear-gradient(90deg,#3d7d5c 0 8px,#2f6b4f 8px 16px);border-top:4px solid #fff}
+  .pet{position:absolute;bottom:14px;image-rendering:pixelated;pointer-events:auto;cursor:pointer;will-change:transform}
+  .pop{position:fixed;pointer-events:none;background:var(--paper);border:2px solid var(--brown);padding:4px 10px;font-family:Nunito;font-weight:700;color:var(--red);z-index:30;
+       animation:up 1s ease-out forwards;font-size:16px;white-space:nowrap}
+  @keyframes up{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-46px)}}
+
+  @media (max-width:760px){
+    .tiles,.donate,.about{grid-template-columns:1fr!important}
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .stat .n{font-size:22px}
+    .card{padding:20px;box-shadow:4px 4px 0 var(--brown)}
+    .bar{grid-template-columns:repeat(16,1fr)}
+  }
+</style>
+</head>
+<body>
+<script>
+/* ============================================================
+   CONFIGURACIÓN — lo único que hay que actualizar
+   ============================================================ */
+const CONFIG = {
+  meta: 500,           // € objetivo de la colecta
+  cambio: 3.87,        // soles por 1 € (5 nov 2026, aprox.)
+  cierre: "2026-12-24",
+  envio: "20 de diciembre", // fecha en que Manu envía lo juntado por Bizum
+  bizum: "672 900 022",           // número de Bizum de Manu, p. ej. "600 000 000"
+  mostrarNombres: true,
+  // Cada donación es una fila. moneda: "EUR" o "PEN". quien: "" = anónimo
+  donaciones: [
+    // { quien: "Tía Rosa", monto: 20, moneda: "EUR", via: "Bizum" },
+    // { quien: "",         monto: 50, moneda: "PEN", via: "Yape" },
+  ],
+  actualizaciones: [
+    // { fecha: "15 nov", texto: "Pagamos 5 descartes de leucemia y sida." },
+  ]
+};
+</script>
+
+<header class="hero wrap">
+  <div class="eyebrow"><i></i>Colecta navideña 2026</div>
+  <h1>Navidad para <em>120 + peludos</em> de Lima</h1>
+  <p class="lead"><strong>Ayuda y Alerta Perruna Lima</strong> rescata perritos y gatitos de la calle. No tienen local: los cuidan en hogares temporales y pagan veterinario, comida y medicinas a pulmón. Esta Navidad queremos echarles una mano desde Madrid.</p>
+
+  <div class="card progress" aria-live="polite">
+    <div class="amounts">
+      <span class="raised" id="raised">0 €</span>
+      <span class="soles-eq" id="raisedPen">≈ S/ 0</span>
+      <span class="goal">de <b id="goal">500 €</b></span>
+    </div>
+    <div class="split">
+      <span class="chip">En euros: <b id="inEur">0 €</b></span>
+      <span class="chip">En soles: <b id="inPen">S/ 0</b></span>
+    </div>
+    <div class="bar" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="stats">
+      <div class="stat"><div class="n" id="pct">0%</div><div class="l">de la meta</div></div>
+      <div class="stat"><div class="n" id="donors">0</div><div class="l">donaciones</div></div>
+      <div class="stat"><div class="n" id="days">–</div><div class="l">días para Nochebuena</div></div>
+    </div>
+    <a class="cta" href="#donar">Quiero ayudar ♥</a>
+  </div>
+</header>
+
+<section class="wrap">
+  <h2>Qué consigue tu donación</h2>
+  <p class="sub">Meta: 500 €, para cenas, veterinario y medicinas esta Navidad.</p>
+  <div class="tiles">
+    <div class="tile">
+      <div class="price">~25 €</div><div class="soles">≈ S/ 97</div>
+      <p><b>Un recorrido diario</b> llevando la cenita a los callejeritos.</p>
+    </div>
+    <div class="tile">
+      <div class="price">~6 €</div><div class="soles">S/ 23</div>
+      <p>Una <b>lata de comida medicada</b> para un peludito en recuperación.</p>
+    </div>
+    <div class="tile">
+      <div class="price">Lo que puedas</div><div class="soles">todo suma</div>
+      <p>Comida, vacunas, esterilizaciones y urgencias para los más de 120 que cuidan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="donar">
+  <h2>Cómo donar</h2>
+  <p class="sub">Elige la que te sea más cómoda. Todo termina en el refugio.</p>
+  <div class="donate">
+    <div class="card way">
+      <span class="tag">Desde España · más fácil</span>
+      <h3>Bizum a Manu</h3>
+      <div class="number" id="bizum">Pídele el número a Manu</div>
+      <p style="font-size:15px;margin:4px 0 12px">Manu lo junta todo y lo envía al refugio en un solo pago el <b id="envio">20 de diciembre</b>, con comprobante aquí abajo.</p>
+      <button class="copy" id="copyBizum" type="button" hidden>Copiar número</button>
+    </div>
+    <div class="card way">
+      <span class="tag">Desde cualquier país</span>
+      <h3>PayPal al refugio</h3>
+      <p style="font-size:15px;margin:4px 0 14px">Directo a ellos. Pon <b>"Navidad Madrid"</b> en el concepto.</p>
+      <a class="cta" href="https://www.paypal.me/ayudayalertaperruna">Donar por PayPal</a>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0">paypal.me/ayudayalertaperruna</p>
+    </div>
+    <div class="card way alt">
+      <span class="tag">Si estás en Perú</span>
+      <h3>Yape / Plin al refugio</h3>
+      <div class="number" id="yape">970 204 369</div>
+      <p style="font-size:15px;margin:0 0 12px">A nombre de <b>Giorgia Nayelhi Diaz Arnao</b></p>
+      <button class="copy" id="copyBtn" type="button">Copiar número</button>
+    </div>
+  </div>
+  <div class="note">Si donas por <b>PayPal o Yape</b>, avísale a Manu con el importe para sumarlo a la barra. Los Bizum ya los ve él.</div>
+  <div id="wallWrap" hidden style="margin-bottom:10px">
+    <h3 class="px" style="font-size:22px;color:var(--brown);margin:30px 0 0">Gracias a</h3>
+    <div class="wall" id="wall"></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about">
+    <div>
+      <h2>Quiénes son</h2>
+      <ul>
+        <li>Rescatistas independientes en Lima, sin albergue físico.</li>
+        <li>Cuidan a más de 120 perritos y gatitos en hogares temporales hasta encontrarles familia.</li>
+        <li>Se financian con donaciones y con su propia pastelería para mascotas.</li>
+      </ul>
+      <div class="links">
+        <a class="linkcard" href="https://www.instagram.com/ayudayalertaperrunalima/">
+          <span class="lc-icon" data-look="1"></span>
+          <span class="lc-txt"><b>Sigue sus rescates</b><small>Instagram · @ayudayalertaperrunalima</small></span>
+          <span class="lc-go">→</span>
+        </a>
+        <a class="linkcard" href="https://www.instagram.com/petbakery.pe/">
+          <span class="lc-icon" data-look="7"></span>
+          <span class="lc-txt"><b>Pet Bakery: postres para peludos</b><small>Cada compra ayuda al refugio · @petbakery.pe</small></span>
+          <span class="lc-go">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="updates">
+      <h2>En qué se usa</h2>
+      <p class="sub" style="margin-bottom:14px">Aquí iremos contando qué se ha pagado con lo recaudado, con fotos y comprobantes.</p>
+      <div id="updates"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  Colecta organizada por Manu desde Madrid a favor de Ayuda y Alerta Perruna Lima. No es una página oficial del refugio.<br>
+  Psst: haz clic en los animalitos de abajo.
+</footer>
+
+<div id="lane" aria-hidden="true"></div>
+
+<script>
+(() => {
+  const num = n => Math.round(n).toLocaleString("es-ES", {useGrouping:"always"});
+  const fmt = n => num(n) + " €";
+  const fmtPen = n => "S/ " + num(n);
+  const D = CONFIG.donaciones;
+  const eur = D.filter(d => d.moneda === "EUR").reduce((a,d) => a + d.monto, 0);
+  const pen = D.filter(d => d.moneda === "PEN").reduce((a,d) => a + d.monto, 0);
+  const total = eur + pen / CONFIG.cambio;
+  const pct = CONFIG.meta > 0 ? Math.min(100, total / CONFIG.meta * 100) : 0;
+  document.getElementById("inEur").textContent = fmt(eur);
+  document.getElementById("inPen").textContent = fmtPen(pen);
+  document.getElementById("envio").textContent = CONFIG.envio;
+  if (CONFIG.bizum){
+    document.getElementById("bizum").textContent = CONFIG.bizum;
+    const cb = document.getElementById("copyBizum"); cb.hidden = false;
+    cb.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(CONFIG.bizum.replace(/\s/g,"")); cb.textContent = "¡Copiado!"; }
+      catch { cb.textContent = "Cópialo a mano"; }
+      setTimeout(() => cb.textContent = "Copiar número", 2200);
+    });
+  }
+  if (CONFIG.mostrarNombres && D.length){
+    document.getElementById("wallWrap").hidden = false;
+    const wall = document.getElementById("wall");
+    D.forEach(d => { const t = document.createElement("span"); t.textContent = d.quien || "Anónimo ♥"; wall.appendChild(t); });
+  }
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- Sprites pixel art ---------- */
+  const SPR = {
+    dog: {
+      body:[
+        "..........dd....",
+        ".........dbbbb..",
+        ".........bbkbb..",
+        "b........bbbbbbk",
+        ".b.......bbbbb..",
+        "..bbbbbbbbbbb...",
+        "..bbsbbbbsbbb...",
+        "..bbbbbbbbbb....",
+      ],
+      A:["..b.b.....b.b...","..b.b.....b.b..."],
+      B:["...bb.....bb....","..b..b...b..b..."],
+      hatX:9
+    },
+    cat: {
+      body:[
+        "b..........d.d..",
+        "b..........bbbb.",
+        "b..........bkbb.",
+        ".b.........bbbbk",
+        "..b.......bbbb..",
+        "..bbbbbbbbbbb...",
+        "..bsbsbsbbbb....",
+        "..bbbbbbbbbb....",
+      ],
+      A:["..b.b....b.b....","..b.b....b.b...."],
+      B:["...bb....bb.....","..b..b..b..b...."],
+      hatX:10
+    }
+  };
+  const HAT = ["....rw","..rrr.",".rrrr.","wwwwww"];
+  const LOOKS = [
+    {sp:"dog", b:"#f4efe6", d:"#d8c6a8", s:"#f4efe6", k:"#2b1d16", o:"#5a3a28"},  // blanco
+    {sp:"dog", b:"#8a5a3b", d:"#4a2e1f", s:"#5e3a25", k:"#1a110c", o:"#2b1d16"},  // atigrado
+    {sp:"dog", b:"#d4964f", d:"#a5682c", s:"#d4964f", k:"#2b1d16", o:"#5a3a28"},  // caramelo
+    {sp:"dog", b:"#33292a", d:"#1c1617", s:"#33292a", k:"#f4efe6", o:"#120d0d"},  // negrito
+    {sp:"cat", b:"#ec9440", d:"#c4651f", s:"#c4651f", k:"#2b1d16", o:"#5a3a28"},  // naranja tipo Catalino
+    {sp:"cat", b:"#a4a9ae", d:"#6f757b", s:"#6f757b", k:"#2b1d16", o:"#3a3d40"},  // gris
+    {sp:"cat", b:"#2e2a2b", d:"#2e2a2b", s:"#f4efe6", k:"#e9c84a", o:"#120d0d"},  // negro
+    {sp:"cat", b:"#f6f1e8", d:"#e1a57a", s:"#e8913a", k:"#2b1d16", o:"#5a3a28"},  // calico
+  ];
+
+  function draw(look, frame, hat){
+    const sp = SPR[look.sp];
+    const rows = sp.body.concat(frame ? sp.B : sp.A);
+    const W = 16, H = rows.length + 4, P = 1;
+    const grid = Array.from({length:H}, () => Array(W).fill(null));
+    rows.forEach((r,y) => [...r].forEach((c,x) => { if(c !== ".") grid[y+4][x] = look[c]; }));
+    if (hat) HAT.forEach((r,y) => [...r].forEach((c,x) => {
+      if (c !== ".") grid[y+1][sp.hatX+x] = c === "r" ? "#c8322a" : "#ffffff";
+    }));
+    const cv = document.createElement("canvas");
+    cv.width = W + P*2; cv.height = H + P*2;
+    const ctx = cv.getContext("2d");
+    // contorno
+    ctx.fillStyle = look.o;
+    for (let y=0;y<H;y++) for (let x=0;x<W;x++) if (grid[y][x]){
+      for (const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+        const nx=x+dx, ny=y+dy;
+        if (nx<0||ny<0||nx>=W||ny>=H||!grid[ny][nx]) ctx.fillRect(nx+P, ny+P, 1, 1);
+      }
+    }
+    for (let y=0;y<H;y++) for (let x=0;x<W;x++) if (grid[y][x]){
+      ctx.fillStyle = grid[y][x]; ctx.fillRect(x+P, y+P, 1, 1);
+    }
+    return cv;
+  }
+
+  /* ---------- Barra de progreso ---------- */
+  const bar = document.getElementById("bar");
+  const segs = matchMedia("(max-width:760px)").matches ? 16 : 24;
+  for (let i=0;i<segs;i++) bar.appendChild(document.createElement("span"));
+  bar.setAttribute("aria-valuenow", Math.round(pct));
+  document.getElementById("goal").textContent = fmt(CONFIG.meta) + " (≈ " + fmtPen(CONFIG.meta*CONFIG.cambio) + ")";
+  document.getElementById("donors").textContent = D.length;
+  const left = Math.ceil((new Date(CONFIG.cierre + "T23:59:59") - new Date()) / 864e5);
+  document.getElementById("days").textContent = left > 0 ? left : "¡Ya!";
+
+  const barDog = document.createElement("div");
+  barDog.className = "bar-dog";
+  const bdFrames = [draw(LOOKS[2], 0, true), draw(LOOKS[2], 1, true)];
+  bdFrames.forEach((f,j) => { f.style.width = (f.width*3)+"px"; f.style.display = j ? "none" : "block"; barDog.appendChild(f); });
+  barDog.style.left = "0%";
+  bar.appendChild(barDog);
+  if (!reduce){ let bf = 0; setInterval(() => { bf ^= 1;
+    bdFrames[0].style.display = bf ? "none" : "block"; bdFrames[1].style.display = bf ? "block" : "none"; }, 220); }
+  barDog.addEventListener("click", ev => {
+    const s = document.createElement("div"); s.className = "pop";
+    s.textContent = "¡Juntos podemos llegar a la meta! ♥";
+    s.style.left = Math.max(150, Math.min(innerWidth - 150, ev.clientX)) + "px"; s.style.top = (ev.clientY - 24) + "px";
+    s.style.animationDuration = "1.8s";
+    document.body.appendChild(s); setTimeout(() => s.remove(), 1800);
+  });
+  document.querySelectorAll(".lc-icon").forEach(el => el.appendChild(draw(LOOKS[+el.dataset.look], 0, false)));
+
+  function animateNumbers(){
+    const t0 = performance.now(), dur = reduce ? 0 : 1200;
+    const step = now => {
+      const k = dur ? Math.min(1, (now - t0)/dur) : 1, e = 1 - Math.pow(1-k, 3);
+      document.getElementById("raised").textContent = fmt(total * e);
+      document.getElementById("raisedPen").textContent = "≈ " + fmtPen(total * CONFIG.cambio * e);
+      document.getElementById("pct").textContent = Math.round(pct * e) + "%";
+      const on = Math.round(segs * pct/100 * e);
+      [...bar.querySelectorAll("span")].forEach((s,i) => s.classList.toggle("on", i < on));
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    barDog.style.left = Math.max(2, Math.min(98, pct)) + "%";
+  }
+  setTimeout(animateNumbers, 250);
+
+  /* ---------- Actualizaciones ---------- */
+  const up = document.getElementById("updates");
+  if (!CONFIG.actualizaciones.length){
+    up.innerHTML = '<p class="empty">Todavía no hay movimientos. ¡Pronto contaremos el primero!</p>';
+  } else {
+    CONFIG.actualizaciones.slice().reverse().forEach(u => {
+      const d = document.createElement("div"); d.className = "upd";
+      const a = document.createElement("div"); a.className = "d"; a.textContent = u.fecha;
+      const b = document.createElement("div"); b.textContent = u.texto;
+      d.append(a,b); up.appendChild(d);
+    });
+  }
+
+  /* ---------- Copiar Yape ---------- */
+  document.getElementById("copyBtn").addEventListener("click", async e => {
+    try { await navigator.clipboard.writeText("970204369"); e.target.textContent = "¡Copiado!"; }
+    catch { e.target.textContent = "Cópialo a mano: 970204369"; }
+    setTimeout(() => e.target.textContent = "Copiar número", 2200);
+  });
+
+  /* ---------- Animalitos caminando ---------- */
+  const lane = document.getElementById("lane");
+  const SCALE = 3;
+  const count = innerWidth < 600 ? 5 : innerWidth < 1000 ? 7 : 10;
+  const pets = [];
+  for (let i=0;i<count;i++){
+    const look = LOOKS[i % LOOKS.length];
+    const hat = Math.random() < .5;
+    const frames = [draw(look,0,hat), draw(look,1,hat)];
+    const el = document.createElement("div");
+    el.className = "pet";
+    frames.forEach((f,j) => { f.style.width = (f.width*SCALE)+"px"; f.style.display = j ? "none" : "block"; el.appendChild(f); });
+    lane.appendChild(el);
+    const w = frames[0].width*SCALE;
+    const p = { el, frames, w, sp:look.sp,
+      x: Math.random()*(innerWidth - w), dir: Math.random()<.5 ? 1 : -1,
+      v: 28 + Math.random()*34, fr:0, ft:0, pause:0, nextPause: 2 + Math.random()*6 };
+    el.addEventListener("click", ev => {
+      const s = document.createElement("div"); s.className = "pop";
+      s.textContent = p.sp === "dog" ? "¡Guau! ♥" : "¡Miau! ♥";
+      s.style.left = ev.clientX + "px"; s.style.top = (ev.clientY - 20) + "px";
+      document.body.appendChild(s); setTimeout(() => s.remove(), 1000);
+      p.pause = 1.2;
+    });
+    pets.push(p);
+  }
+  const place = p => p.el.style.transform = `translateX(${p.x}px) scaleX(${p.dir})`;
+  pets.forEach(place);
+  if (reduce) return;
+
+  let last = performance.now();
+  function tick(now){
+    const dt = Math.min(.05, (now - last)/1000); last = now;
+    const W = innerWidth;
+    for (const p of pets){
+      if (p.pause > 0){ p.pause -= dt; continue; }
+      p.nextPause -= dt;
+      if (p.nextPause <= 0){ p.pause = .8 + Math.random()*1.6; p.nextPause = 3 + Math.random()*8;
+        if (Math.random() < .3) p.dir *= -1; place(p); continue; }
+      p.x += p.dir * p.v * dt;
+      if (p.x > W - p.w){ p.x = W - p.w; p.dir = -1; }
+      if (p.x < 0){ p.x = 0; p.dir = 1; }
+      p.ft += dt;
+      if (p.ft > .16){ p.ft = 0; p.fr ^= 1;
+        p.frames[0].style.display = p.fr ? "none" : "block";
+        p.frames[1].style.display = p.fr ? "block" : "none"; }
+      place(p);
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
