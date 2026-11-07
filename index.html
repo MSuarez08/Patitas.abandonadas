@@ -43,7 +43,7 @@
   .chip b{font-weight:800}
   .donate{grid-template-columns:repeat(3,1fr)!important}
   .way{display:flex;flex-direction:column}
-  .way .cta{align-self:flex-start}
+  .way .cta{align-self:flex-start;margin-top:14px}
   .wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
   .wall span{background:var(--paper);border:2px solid var(--brown);padding:4px 10px;font-weight:700;font-size:15px}
   .links{display:grid;gap:12px;margin-top:18px}
@@ -97,7 +97,7 @@
   .upd{border-left:4px solid var(--green);padding:4px 0 4px 14px;margin-bottom:12px}
   .upd .d{font-size:13px;font-weight:800;color:var(--green)}
 
-  footer{padding:40px 0 20px;color:var(--muted);font-size:14px}
+  footer{padding:56px 0 20px;color:var(--muted);font-size:14px}
 
   /* Suelo con animalitos */
   #lane{position:fixed;left:0;right:0;bottom:0;height:78px;pointer-events:none;z-index:20;overflow:hidden;background:linear-gradient(rgba(251,245,234,0),rgba(251,245,234,.95) 45%)}
@@ -143,7 +143,7 @@ const CONFIG = {
 <header class="hero wrap">
   <div class="eyebrow"><i></i>Colecta navideña 2026</div>
   <h1>Navidad para <em>120 + peludos</em> de Lima</h1>
-  <p class="lead"><strong>Ayuda y Alerta Perruna Lima</strong> rescata perritos y gatitos de la calle. No tienen local: los cuidan en hogares temporales y pagan veterinario, comida y medicinas a pulmón. Esta Navidad queremos echarles una mano desde Madrid.</p>
+  <p class="lead"><strong>Patitas Abandonadas</strong> rescata perritos y gatitos de la calle. No tienen local: los cuidan en hogares temporales y pagan veterinario, comida y medicinas a pulmón. Esta Navidad queremos echarles una mano desde Madrid.</p>
 
   <div class="card progress" aria-live="polite">
     <div class="amounts">
@@ -198,14 +198,15 @@ const CONFIG = {
     <div class="card way">
       <span class="tag">Desde cualquier país</span>
       <h3>PayPal al refugio</h3>
-      <p style="font-size:15px;margin:4px 0 14px">Directo a ellos. Pon <b>"Navidad Madrid"</b> en el concepto.</p>
-      <a class="cta" href="https://www.paypal.me/ayudayalertaperruna">Donar por PayPal</a>
-      <p style="font-size:13px;color:var(--muted);margin:10px 0 0">paypal.me/ayudayalertaperruna</p>
+      <p style="font-size:15px;margin:4px 0 8px">Envía a este correo y pon <b>"Navidad Madrid"</b> en el concepto.</p>
+      <div class="number" style="font-size:19px;word-break:break-all">mylenesong94@gmail.com</div>
+      <button class="copy" id="copyPaypal" type="button" style="align-self:flex-start">Copiar correo</button>
+      <a class="cta" href="https://www.paypal.com/myaccount/transfer/homepage/pay">Abrir PayPal</a>
     </div>
     <div class="card way alt">
       <span class="tag">Si estás en Perú</span>
       <h3>Yape / Plin al refugio</h3>
-      <div class="number" id="yape">970 204 369</div>
+      <div class="number" id="yape">919 682 220</div>
       <p style="font-size:15px;margin:0 0 12px">A nombre de <b>Giorgia Nayelhi Diaz Arnao</b></p>
       <button class="copy" id="copyBtn" type="button">Copiar número</button>
     </div>
@@ -224,17 +225,12 @@ const CONFIG = {
       <ul>
         <li>Rescatistas independientes en Lima, sin albergue físico.</li>
         <li>Cuidan a más de 120 perritos y gatitos en hogares temporales hasta encontrarles familia.</li>
-        <li>Se financian con donaciones y con su propia pastelería para mascotas.</li>
+        <li>Se sostienen gracias a las donaciones de gente como tú.</li>
       </ul>
       <div class="links">
-        <a class="linkcard" href="https://www.instagram.com/ayudayalertaperrunalima/">
+        <a class="linkcard" href="https://www.instagram.com/patitas.abandonadas/">
           <span class="lc-icon" data-look="1"></span>
-          <span class="lc-txt"><b>Sigue sus rescates</b><small>Instagram · @ayudayalertaperrunalima</small></span>
-          <span class="lc-go">→</span>
-        </a>
-        <a class="linkcard" href="https://www.instagram.com/petbakery.pe/">
-          <span class="lc-icon" data-look="7"></span>
-          <span class="lc-txt"><b>Pet Bakery: postres para peludos</b><small>Cada compra ayuda al refugio · @petbakery.pe</small></span>
+          <span class="lc-txt"><b>Sigue sus rescates en Instagram</b><small>@patitas.abandonadas</small></span>
           <span class="lc-go">→</span>
         </a>
       </div>
@@ -248,7 +244,7 @@ const CONFIG = {
 </section>
 
 <footer class="wrap">
-  Colecta organizada por Manu desde Madrid a favor de Ayuda y Alerta Perruna Lima. No es una página oficial del refugio.<br>
+  Colecta organizada por Manu desde Madrid a favor de Patitas Abandonadas. No es una página oficial del refugio.<br>
   Psst: haz clic en los animalitos de abajo.
 </footer>
 
@@ -410,10 +406,16 @@ const CONFIG = {
     });
   }
 
+  /* ---------- Copiar PayPal ---------- */
+  document.getElementById("copyPaypal").addEventListener("click", async e => {
+    try { await navigator.clipboard.writeText("mylenesong94@gmail.com"); e.target.textContent = "¡Copiado!"; }
+    catch { e.target.textContent = "Cópialo a mano"; }
+    setTimeout(() => e.target.textContent = "Copiar correo", 2200);
+  });
   /* ---------- Copiar Yape ---------- */
   document.getElementById("copyBtn").addEventListener("click", async e => {
-    try { await navigator.clipboard.writeText("970204369"); e.target.textContent = "¡Copiado!"; }
-    catch { e.target.textContent = "Cópialo a mano: 970204369"; }
+    try { await navigator.clipboard.writeText("919682220"); e.target.textContent = "¡Copiado!"; }
+    catch { e.target.textContent = "Cópialo a mano: 919682220"; }
     setTimeout(() => e.target.textContent = "Copiar número", 2200);
   });
 
