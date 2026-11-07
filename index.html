@@ -56,6 +56,15 @@
   .lc-txt small{color:var(--muted);font-size:14px;margin-top:2px}
   .lc-go{font-weight:900;font-size:22px;color:var(--red)}
   .bar-dog{cursor:pointer}
+  .banks{margin-top:16px;border-top:2px dashed var(--line);padding-top:12px;font-size:14px}
+  .banks summary{cursor:pointer;font-weight:800;color:var(--red-dark)}
+  .bank{margin-top:12px}
+  .bank b{display:block;margin-bottom:4px}
+  .bank .row{display:grid;grid-template-columns:1fr auto;column-gap:8px;align-items:center;margin-bottom:8px}
+  .bank .row span{grid-column:1/-1;color:var(--muted);font-size:12px;line-height:1.2}
+  .bank code{font-family:Nunito;font-weight:800;font-size:13px;white-space:nowrap}
+  .copy.sm{font-size:12px;padding:3px 8px}
+  .holder{margin:10px 0 0;color:var(--muted)}
   .bar{position:relative;margin:40px 0 14px;height:34px;border:3px solid var(--brown);background:#f3e6d3;
        display:grid;grid-template-columns:repeat(24,1fr);gap:3px;padding:3px}
   .bar span{background:transparent}
@@ -208,7 +217,21 @@ const CONFIG = {
       <h3>Yape / Plin al refugio</h3>
       <div class="number" id="yape">919 682 220</div>
       <p style="font-size:15px;margin:0 0 12px">A nombre de <b>Giorgia Nayelhi Diaz Arnao</b></p>
-      <button class="copy" id="copyBtn" type="button">Copiar número</button>
+      <button class="copy" id="copyBtn" type="button" style="align-self:flex-start">Copiar número</button>
+      <details class="banks">
+        <summary>Ver cuentas bancarias (BCP / Interbank)</summary>
+        <div class="bank">
+          <b>BCP · Soles</b>
+          <div class="row"><span>Cuenta</span><code>191-70748168-0-93</code><button class="copy sm" data-copy="19170748168093" type="button">Copiar</button></div>
+          <div class="row"><span>CCI</span><code>00219117074816809351</code><button class="copy sm" data-copy="00219117074816809351" type="button">Copiar</button></div>
+        </div>
+        <div class="bank">
+          <b>Interbank</b>
+          <div class="row"><span>Cuenta</span><code>898-331536919-5</code><button class="copy sm" data-copy="8983315369195" type="button">Copiar</button></div>
+          <div class="row"><span>CCI</span><code>003-898-013315369195-40</code><button class="copy sm" data-copy="00389801331536919540" type="button">Copiar</button></div>
+        </div>
+        <p class="holder">Titular de ambas: <b>Giorgia Nayelhi Diaz Arnao</b>. Con el CCI puedes transferir desde cualquier banco peruano.</p>
+      </details>
     </div>
   </div>
   <div class="note">Si donas por <b>PayPal o Yape</b>, avísale a Manu con el importe para sumarlo a la barra. Los Bizum ya los ve él.</div>
@@ -406,6 +429,12 @@ const CONFIG = {
     });
   }
 
+  /* ---------- Copiar cuentas ---------- */
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copy); b.textContent = "¡Copiado!"; }
+    catch { b.textContent = "Cópialo a mano"; }
+    setTimeout(() => b.textContent = "Copiar", 2000);
+  }));
   /* ---------- Copiar PayPal ---------- */
   document.getElementById("copyPaypal").addEventListener("click", async e => {
     try { await navigator.clipboard.writeText("mylenesong94@gmail.com"); e.target.textContent = "¡Copiado!"; }
